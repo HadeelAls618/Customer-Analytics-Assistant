@@ -1,0 +1,10 @@
+
+streamlit
+pandas
+numpy
+joblib
+lifetimes
+scikit-learn
+efficient-apriori
+Pillow
+
