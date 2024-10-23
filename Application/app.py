@@ -20,7 +20,7 @@ scaler = joblib.load('Application/models/scaled_features.joblib')
 kmeans = joblib.load('Application/models/kmeans_model.joblib')
 
 # Load customer transaction data
-data = pd.read_csv('Application/Dataset/data_full2.csv')
+data = pd.read_csv('Dataset/data_full2.csv')
 
 # Data preprocessing function
 def preprocess_data(data):
