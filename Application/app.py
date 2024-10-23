@@ -14,13 +14,13 @@ from efficient_apriori import apriori as efficient_apriori
 
 
 # Load pre-trained models
-bgf = joblib.load('bgf_model.joblib')
-ggf = joblib.load('ggf_model.joblib')
-scaler = joblib.load('scaled_features.joblib')
-kmeans = joblib.load('kmeans_model.joblib')
+bgf = joblib.load('models/bgf_model.joblib')
+ggf = joblib.load('models/ggf_model.joblib')
+scaler = joblib.load('models/scaled_features.joblib')
+kmeans = joblib.load('models/kmeans_model.joblib')
 
 # Load customer transaction data
-data = pd.read_csv('data_full2.csv')
+data = pd.read_csv('Dataset/data_full2.csv')
 
 # Data preprocessing function
 def preprocess_data(data):
@@ -541,10 +541,9 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 from PIL import Image
-import streamlit as st
 
 # Load the images
-clv_image = Image.open("CLV_image2.png")
+clv_image = Image.open("images/CLV_image2.png")
 
 # Sidebar Image with Custom Width and Centering
 st.sidebar.markdown(
@@ -607,7 +606,7 @@ Custalyze helps you quantify your customer's potential, predict their future val
     """)
 
     # Main Image with Controlled Width
-    #st.image("CLV_image.png", width=500)  # Adjust the width to make the image smaller
+    #st.image("images/CLV_image.png", width=500)  # Adjust the width to make the image smaller
     # Main Image with Controlled Width and Centering
     col1, col2, col3 = st.columns([1, 6, 1])
 
