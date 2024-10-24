@@ -9,6 +9,7 @@ Explore the live app: [Custalyze Web App](https://customer-analytics-assistant-u
 ## **Project Overview**
 
 **Custalyze** helps retail businesses leverage customer data to predict **Customer Lifetime Value (CLV)**, understand customer segments, and provide personalized product recommendations. Built using a UK retail dataset, this project enables businesses to optimize their marketing efforts by providing valuable insights into each customer’s potential value and behavior, all through a user-friendly web interface.
+
 ---
 ### **App Features:**
 - Predict **Customer Lifetime Value (CLV)** for individual customers.
