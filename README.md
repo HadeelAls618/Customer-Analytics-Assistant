@@ -20,7 +20,7 @@ Explore the live app: [Custalyze Web App](https://customer-analytics-assistant-u
 
 ---
 
-## **Problem Statment**
+## **Problem Statment & provided solution**
 
 In today’s highly competitive retail market, understanding customer behavior and predicting future customer value are essential for optimizing marketing strategies and maximizing business growth. Many businesses invest heavily in customer acquisition without fully recognizing the long-term potential of individual customers, leading to inefficient marketing spend and missed opportunities for customer retention.
 **Custalyze** addresses these challenges by providing a comprehensive solution that quantifies a customer’s potential and delivers actionable insights. Built using a UK retail dataset, Custalyze empowers businesses to make informed decisions, optimize marketing resources, and retain high-value customers. By offering predictive insights into CLV and personalized strategies for each customer segment, businesses can tailor their marketing efforts, improve customer engagement, and drive sustainable growth.
