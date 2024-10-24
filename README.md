@@ -9,8 +9,8 @@ Explore the live app: [Custalyze Web App](https://customer-analytics-assistant-u
 ## **Project Overview**
 
 **Custalyze** helps retail businesses leverage customer data to predict **Customer Lifetime Value (CLV)**, understand customer segments, and provide personalized product recommendations. Built using a UK retail dataset, this project enables businesses to optimize their marketing efforts by providing valuable insights into each customer’s potential value and behavior, all through a user-friendly web interface.
-
-### **Key Features:**
+---
+### **App Features:**
 - Predict **Customer Lifetime Value (CLV)** for individual customers.
 - Perform **RFM Analysis** to evaluate customer engagement and value.
 - **Customer Segmentation** based on predicted CLV and RFM scores for tailored marketing strategies.
@@ -19,32 +19,11 @@ Explore the live app: [Custalyze Web App](https://customer-analytics-assistant-u
 
 ---
 
-## **Introduction**
+## **Problem Statment**
 
-In the highly competitive retail market, understanding customer behavior and predicting future customer value are crucial to optimizing marketing strategies. Many businesses spend excessively on customer acquisition without realizing the long-term potential of each customer. **Custalyze** offers businesses a solution by quantifying a customer's potential and providing actionable insights to maximize customer retention and drive business growth.
+In today’s highly competitive retail market, understanding customer behavior and predicting future customer value are essential for optimizing marketing strategies and maximizing business growth. Many businesses invest heavily in customer acquisition without fully recognizing the long-term potential of individual customers, leading to inefficient marketing spend and missed opportunities for customer retention.
+**Custalyze** addresses these challenges by providing a comprehensive solution that quantifies a customer’s potential and delivers actionable insights. Built using a UK retail dataset, Custalyze empowers businesses to make informed decisions, optimize marketing resources, and retain high-value customers. By offering predictive insights into CLV and personalized strategies for each customer segment, businesses can tailor their marketing efforts, improve customer engagement, and drive sustainable growth.
 
-Built using a **UK retail dataset**, Custalyze enables businesses to predict CLV, segment customers, and deliver personalized product recommendations tailored to each customer’s value and engagement level.
-
----
-
-## **Problem Statement**
-
-Retail businesses often struggle to understand the long-term value of individual customers. As a result, they may waste resources on inefficient marketing strategies or miss out on retaining high-value customers. **Custalyze** addresses these challenges by offering:
-
-- Insights into **Customer Lifetime Value (CLV)** to forecast future worth.
-- **Customer Segmentation** to personalize marketing efforts.
-- **Personalized Product Recommendations** tailored to each customer segment to boost engagement and sales.
-  
----
-
-## **Solution Overview**
-
-**Custalyze** provides a streamlined solution for businesses looking to:
-
-- **Predict Customer Lifetime Value (CLV)**: Accurately forecast the future potential of customers.
-- **Segment Customers**: Group customers into meaningful segments based on their behavior and potential value.
-- **Personalize Engagement**: Offer product recommendations based on customer preferences, history, and segmentation.
-- **Optimize Marketing Spend**: Focus marketing efforts on high-value customer segments to maximize returns.
 ---
 
 ## **Project Workflow**
@@ -73,18 +52,6 @@ Retail businesses often struggle to understand the long-term value of individual
   - Users can explore customer analytics by entering a customer ID and selecting from various tasks (CLTV analysis, segmentation, recommendations).
   - Check out the deployed app here: [Custalyze Web App](https://customer-analytics-assistant-urzknsdg8udnsjm9x4efhd.streamlit.app/)
 
----
-
-## **Technologies and Tools**
-
-- **Data Processing**: Pandas, NumPy
-- **Modeling**: Lifetimes (BG/NBD, Gamma-Gamma models), Scikit-learn
-- **Customer Segmentation**: K-Means Clustering
-- **Recommendation System**: 
-  - Content-Based Filtering
-  - Collaborative Filtering
-  - Association Rule-Based Systems
-- **Visualization and Deployment**: matplotlib, seaborn, Streamlit
 ---
 
 ## **Future Enhancements**
