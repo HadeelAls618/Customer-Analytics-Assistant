@@ -579,7 +579,7 @@ st.markdown("""
         color: #333333;  /* Optional: Change the title color */
     }
     </style>
-    <h1 class="main-title">Custalyze, your Analytics Assistant!</h1>
+    <h1 class="main-title">Custalyze (your Analytics Assistant!)</h1>
     """, unsafe_allow_html=True)
 
 # Preprocess data
