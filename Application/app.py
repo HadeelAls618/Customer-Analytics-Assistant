@@ -574,51 +574,56 @@ st.title("Custalyze, your Analytics Assistant! ")
 # Preprocess data
 preprocessed_data = preprocess_data(data)
 
-# Main Content Image with Custom Size
+# Main Content Sections
 if task == "Introduction":
-    # Custom CSS for Title and Text
-    st.markdown("""
-        <style>
-        h1 {
-            font-size: 2.5rem;  /* Slightly smaller title font */
-            color: #2c3e50;
-            text-align: center;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 1.2rem;
-            color: #555;
-            text-align: center;
-            line-height: 1.6;
-        }
-        </style>
-    """, unsafe_allow_html=True)
-
-
     # Introduction Text
     st.markdown("""
     ### Welcome to Custalyze👋
 
-Many businesses invest in customer acquisition without fully understanding how much each customer will bring in the future, leading to wasted budgets and missed opportunities. That’s where **Custalyze** (Customer + Analyze) steps in.
+    Many businesses invest in customer acquisition without fully understanding how much each customer will bring in the future, leading to wasted budgets and missed opportunities. That’s where **Custalyze** (Customer + Analyze) steps in.
 
-Custalyze helps you quantify your customer's potential, predict their future value, and optimize your strategies. Proactively engage your audience, prevent churn, and maximize marketing spend for the greatest impact.
+    Custalyze helps you quantify your customer's potential, predict their future value, and optimize your strategies. Proactively engage your audience, prevent churn, and maximize marketing spend for the greatest impact.
     """)
 
-    # Main Image with Controlled Width
-    #st.image("images/CLV_image.png", width=500)  # Adjust the width to make the image smaller
     # Main Image with Controlled Width and Centering
     col1, col2, col3 = st.columns([1, 6, 1])
 
     with col1:
-     st.write("")
+        st.write("")
 
     with col2:
-     st.image("Application/images/CLV_image.png", width=500)  # Adjust the width to make the image smaller
+        # Inject CSS to handle image responsiveness
+        st.markdown("""
+        <style>
+        /* Main Image Styling for responsiveness */
+        img {
+            max-width: 100%;  /* Ensure image takes up full width of the container */
+            height: auto;     /* Maintain the aspect ratio */
+            padding: 8px 0px;         
+        }
+
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            img {
+                width: 80%;  /* Scale down the image on smaller screens */
+                 padding: 8px 0px;   
+            }
+        }
+
+        @media (max-width: 480px) {
+            img {
+                width: 50%;  /* Further reduce the size on very small screens */
+                 padding: 8px 0px;   
+            }
+        }
+        </style>
+        """, unsafe_allow_html=True)
+
+        # Load the image with Streamlit
+        st.image("Application/images/CLV_image.png", use_column_width=True)  # Ensure it scales properly
 
     with col3:
-     st.write("")
-
+        st.write("")
 
 # CLTV Analysis Section
 elif task == 'CLTV Analysis':
