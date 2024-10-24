@@ -1,4 +1,4 @@
-
+a
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -537,54 +537,6 @@ st.markdown("""
         height: auto;
     }
 
-    </style>
-""", unsafe_allow_html=True)
-# Adjust the sidebar and content layout for responsive design
-st.markdown("""
-    <style>
-    /* General sidebar settings */
-    [data-testid="stSidebar"] {
-        width: 250px;  /* Default width on desktop */
-        position: fixed;  /* Keep the sidebar fixed so it doesn't push the content */
-        top: 0;
-        left: 0;
-        bottom: 0;
-        z-index: 1;
-    }
-
-    /* Ensure main content takes full width without margin */
-    [data-testid="stAppViewContainer"] {
-        margin-left: 250px;  /* Make sure the content is pushed after the sidebar */
-        padding: 0px;    /* Remove extra padding around the content */
-    }
-
-    /* Media query to reduce sidebar width on smaller screens */
-    @media (max-width: 768px) {
-        [data-testid="stSidebar"] {
-            width: 200px;  /* Reduce sidebar width on tablets */
-        }
-        [data-testid="stAppViewContainer"] {
-            margin-left: 200px;  /* Adjust content margin for smaller screens */
-        }
-    }
-
-    @media (max-width: 480px) {
-        [data-testid="stSidebar"] {
-            width: 150px;  /* Further reduce sidebar width on small mobile devices */
-        }
-        [data-testid="stAppViewContainer"] {
-            margin-left: 150px;  /* Adjust content margin for mobile screens */
-        }
-    }
-
-    @media (max-width: 320px) {
-        [data-testid="stSidebar"] {
-            width: 120px;  /* Smallest sidebar width for very small devices */
-        }
-        [data-testid="stAppViewContainer"] {
-            margin-left: 120px;
-        }
-    }
     </style>
 """, unsafe_allow_html=True)
 
