@@ -1,5 +1,5 @@
 
-import streamlit as st
+
 import pandas as pd
 import numpy as np
 import joblib
@@ -11,6 +11,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.decomposition import TruncatedSVD
 from collections import defaultdict
 from efficient_apriori import apriori as efficient_apriori
+import streamlit as st
 
 
 # Load pre-trained models
@@ -462,27 +463,36 @@ def combined_recommendation_segment2(segment_data, transactions_df, customer_id,
         'Cross-Sell Recommendations': cross_sell_recs,
         'Upsell Recommendations': upsell_recs
     }
+
+# Set page config to wide layout
+st.set_page_config(
+    page_title='',
+    page_icon='📊',
+    layout='wide',
+    initial_sidebar_state='collapsed'
+)
+
+# Inject custom CSS for fixed size and responsive design
 st.markdown("""
     <style>
-    /* Body and Font Styling */
+    /* Custom fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+    /* General Body Styling */
     body {
         background: linear-gradient(135deg, #f8f9fa, #d1e8ff);
         font-family: 'Roboto', sans-serif;
+        overflow-x: auto;  /* Allow vertical scroll but prevent horizontal overflow */
     }
-    h1, h2, h3, h4, h5, h6 {
-        text-align: center;
-        color: #2c3e50;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-    h1 {
-        font-size: 3em;
-    }
-    p, li {
-        font-size: 16px;
-        line-height: 1.8;
-        color: #555;
-        margin-bottom: 15px;
+
+    /* Main container styling */
+    .main-container {
+        max-width: 100%;  /* Set full width for the container */
+        width: 100%;  
+        height: 100%;  
+        margin: auto;
+        padding: 10px;  /* Adjust padding for better spacing */
+        overflow-y: auto;
     }
 
     /* Button Styling */
@@ -501,51 +511,55 @@ st.markdown("""
         transform: scale(1.05);
     }
 
-    /* Sidebar Styling */
-    .stSidebar {
-        background-color: #eef2f7;
-        border-radius: 10px;
-        padding: 20px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Media query for smaller screens */
+    @media (max-width: 768px) {
+        .input-header {
+            font-size: 1.5rem;  /* Decrease font size on smaller screens */
+            padding: 8px 0px;  
+            margin-left: 0;  
+        }
+        .main-title-container {
+            font-size: 2.5rem;  
+            text-align: center;
+        }
+        .stDateInput > label, .stSelectbox > label {
+            font-size: 1.2rem;  
+        }
+        .main-container {
+            padding: 5px;  /* Reduce padding for smaller screens */
+        }
     }
 
-    /* Expander Styling */
-    .st-expander {
-        background-color: #f0f4f7 !important;
-        border-radius: 10px !important;
-        padding: 20px !important;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Media query for very small screens (mobile devices) */
+    @media (max-width: 480px) {
+        .input-header {
+            font-size: 1rem;  
+            padding: 8px 0px;
+        }
+        .main-title-container {
+            font-size: 1rem;
+            text-align: center;
+        }
+        .stDateInput > label, .stSelectbox > label {
+            font-size: 1rem;  
+        }
     }
 
-    /* Enhanced Table */
-    .stTable {
-        border-radius: 10px;
-        overflow: hidden;
+    /* Custom title styling */
+    h1 {
+        font-size: 2rem;
     }
-    table td, table th {
-        padding: 12px;
-    }
-
-    /* Aligning Graphics */
-    .graphics-container {
-        display: flex;
-        justify-content: space-around;
-        margin: 40px 0;
-    }
-    .graphics-container img {
-        width: 150px;
-        height: auto;
-    }
-
     </style>
 """, unsafe_allow_html=True)
 
+# Opening the main container div
+st.markdown('<div class="main-container">', unsafe_allow_html=True)
+
 from PIL import Image
 
-# Load the images
+# Sidebar Image with Custom Width and Centering
 clv_image = Image.open("Application/images/CLV_image2.png")
 
-# Sidebar Image with Custom Width and Centering
 st.sidebar.markdown(
     """
     <style>
@@ -553,72 +567,102 @@ st.sidebar.markdown(
         display: block;
         margin-left: auto;
         margin-right: auto;
-        margin-top: -20px;  /* Adjust this value to move the image upwards if needed */
+        margin-top: -80px;
+    }
+
+    /* Media query for very small screens (mobile devices) */
+    @media (max-width: 480px) {
+        .input-header {
+            font-size: 1rem;  /* Fix small font size */
+            padding: 8px 0px;
+        }
+        .main-title-container {
+            font-size: 1rem;  
+            text-align: center;
+        }
+        .stDateInput > label, .stSelectbox > label {
+            font-size: 1rem;  
+        }
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-st.sidebar.image(clv_image, width=200)  # Adjust the width to make it smaller
-
-
+st.sidebar.image(clv_image, width=200)
 
 # Sidebar Content
-st.sidebar.header("What do you want to know about you customer?")
+st.sidebar.header("What do you want to know about your customer?")
 customer_id = st.sidebar.selectbox("Select Customer ID", data['Customer ID'].unique())
 task = st.sidebar.selectbox("Select a Task", ['Introduction','CLTV Analysis', 'CLV Prediction', 'Customer Segmentation', 'Product Recommendation'])
 
 # Main Title
-st.title("Custalyze, your Analytics Assistant! ")
-# Preprocess data
-preprocessed_data = preprocess_data(data)
-
-# Main Content Image with Custom Size
-if task == "Introduction":
-    # Custom CSS for Title and Text
-    st.markdown("""
-        <style>
-        h1 {
-            font-size: 2.5rem;  /* Slightly smaller title font */
-            color: #2c3e50;
-            text-align: center;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 1.2rem;
-            color: #555;
-            text-align: center;
-            line-height: 1.6;
-        }
-        </style>
+st.markdown("""
+    <style>
+    .main-title {
+        font-size: 32px;  /* Adjust the size as needed */
+        font-weight: bold;
+        text-align: center;  /* You can also center the title */
+        color: #333333;  /* Optional: Change the title color */
+    }
+    </style>
+    <h1 class="main-title">Custalyze, your Analytics Assistant!</h1>
     """, unsafe_allow_html=True)
 
 
+# Preprocess data
+preprocessed_data = preprocess_data(data)
+
+# Main Content Sections
+if task == "Introduction":
     # Introduction Text
     st.markdown("""
     ### Welcome to Custalyze👋
 
-Many businesses invest in customer acquisition without fully understanding how much each customer will bring in the future, leading to wasted budgets and missed opportunities. That’s where **Custalyze** (Customer + Analyze) steps in.
+    Many businesses invest in customer acquisition without fully understanding how much each customer will bring in the future, leading to wasted budgets and missed opportunities. That’s where **Custalyze** (Customer + Analyze) steps in.
 
-Custalyze helps you quantify your customer's potential, predict their future value, and optimize your strategies. Proactively engage your audience, prevent churn, and maximize marketing spend for the greatest impact.
+    Custalyze helps you quantify your customer's potential, predict their future value, and optimize your strategies. Proactively engage your audience, prevent churn, and maximize marketing spend for the greatest impact.
     """)
 
-    # Main Image with Controlled Width
-    #st.image("images/CLV_image.png", width=500)  # Adjust the width to make the image smaller
     # Main Image with Controlled Width and Centering
     col1, col2, col3 = st.columns([1, 6, 1])
 
     with col1:
-     st.write("")
+        st.write("")
 
     with col2:
-     st.image("Application/images/CLV_image.png", width=500)  # Adjust the width to make the image smaller
+        # Inject CSS to handle image responsiveness
+        st.markdown("""
+        <style>
+        /* Main Image Styling for responsiveness */
+        img {
+            max-width: 100%;  /* Ensure image takes up full width of the container */
+            height: auto;     /* Maintain the aspect ratio */
+            padding: 8px 0px;         
+        }
+
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            img {
+                width: 80%;  /* Scale down the image on smaller screens */
+                 padding: 8px 0px;   
+            }
+        }
+
+        @media (max-width: 480px) {
+            img {
+                width: 50%;  /* Further reduce the size on very small screens */
+                 padding: 8px 0px;   
+            }
+        }
+        </style>
+        """, unsafe_allow_html=True)
+
+        # Load the image with Streamlit
+        st.image("Application/images/CLV_image.png", use_column_width=True)  # Ensure it scales properly
 
     with col3:
-     st.write("")
-
+        st.write("")
 
 # CLTV Analysis Section
 elif task == 'CLTV Analysis':
@@ -640,17 +684,16 @@ elif task == 'CLTV Analysis':
 
     # Churn risk indicator based on recency and frequency
     if recency > 600 and purchase_frequency < 10:
-     churn_risk = "High"  # Very high recency and very low frequency
+        churn_risk = "High"  
     elif recency > 500 and purchase_frequency < 15:
-     churn_risk = "Moderate-High"  # Above-average recency and below-average frequency
+        churn_risk = "Moderate-High"  
     elif recency > 300 and purchase_frequency < 20:
-     churn_risk = "Moderate"  # Moderate recency and frequency
+        churn_risk = "Moderate"  
     else:
-     churn_risk = "Low"  # Low recency or high frequency
-
+        churn_risk = "Low"  
 
     # Calculate total revenue across all customers
-    total_revenue = preprocessed_data['TotalPrice'].sum()  # Assuming 'TotalPrice' is the correct column
+    total_revenue = preprocessed_data['TotalPrice'].sum()  
     customer_revenue_percent = (total_amount / total_revenue) * 100 if total_revenue > 0 else 0
 
     # Use two columns to organize the metrics
@@ -672,7 +715,6 @@ elif task == 'CLTV Analysis':
         st.markdown(f"**Predicted Probability of Customer Alive**: {predicted_alive_prob:.2f} 🔮")
         st.markdown(f"**Churn Risk Indicator**: {churn_risk} 🚨")
 
-    # Divider for better sectioning
     st.markdown("---")
 
 elif task == 'CLV Prediction':
@@ -689,7 +731,6 @@ elif task == 'CLV Prediction':
     if clv is not None and forecast_data is not None and not forecast_data.empty:
         st.subheader(f"Results for {forecast_period} days:")
 
-        # Filter the forecast data for the specific customer_id
         customer_forecast_data = forecast_data[forecast_data['Customer ID'] == customer_id]
 
         if not customer_forecast_data.empty:
@@ -712,89 +753,6 @@ elif task == 'CLV Prediction':
         else:
             st.warning(f"No data available for Customer {customer_id} for the specified period.")
 
-    # Horizontal line divider for better section separation
     st.markdown("---")
 
-
-
-       
-
-# Customer Segmentation & Strategy Section
-elif task == 'Customer Segmentation':
-    st.markdown(f"### Customer Segmentation & Strategy for Customer {customer_id}🔍")
-
-    rfm_data = compute_rfm(preprocessed_data, customer_id)
-    segment = segment_customer(rfm_data)
-
-    if segment is not None:
-        # Display segment number and description
-        if segment == 0:
-            st.markdown(f"**Segment:  {segment} (Low CLV, Low Engagement and Value)** 📉")
-            st.markdown("**Characteristics**: Low recency, low frequency, and monetary value indicate new or inactive customers.📉")
-            st.markdown("**Action**: Focus on onboarding and re-engagement. Encourage more activity and increase spending. 🎯")
-            st.markdown("**Strategies**: Personalized offers and best-sellers can reignite interest or nurture new customers. 💡")
-
-        elif segment == 1:
-            st.markdown(f"**Segment:  {segment} (High CLV, High Engagement and Value)** 📈")
-            st.markdown("**Characteristics**: High frequency, high monetary value, and high recency indicate top-tier customers. 📈")
-            st.markdown("**Action**: Retain these customers by maximizing their value and enhancing loyalty. 🎯")
-            st.markdown("**Strategies**: Exclusive offers, early access, and personalized recommendations can keep them loyal. 💡")
-
-        elif segment == 2:
-            st.markdown(f"**Segment: {segment} (Moderate CLV, Moderate Engagement and Value)** 📉")
-            st.markdown("**Characteristics**: Moderate frequency and monetary value, but high recency indicates churn risk.📉")
-            st.markdown("**Action**: Focus on retention and increasing engagement to prevent churn. 🎯")
-            st.markdown("**Strategies**: Upselling, cross-selling can help retain them and transition to higher value. 💡")
-
-    else:
-        st.warning("No valid RFM data available for this customer.")
-
-    # Optional: Add a divider for better separation
-    st.markdown("---")
-
-# Product Recommendation Task
-elif task == 'Product Recommendation':
-    st.header(f"Personalized Recommendations for Customer {customer_id} 🛍")
-
-    # Compute RFM and determine customer segment
-    rfm_data = compute_rfm(preprocessed_data, customer_id)
-    segment = segment_customer(rfm_data)
-
-    if segment is not None:
-        # Fetch customer purchase history
-        customer_history = get_customer_purchase_history(preprocessed_data, customer_id)
-        last_purchased_item = customer_history[0] if len(customer_history) > 0 else None
-
-        # Display last purchased item
-        st.markdown(f"**Last Purchased Item**: {last_purchased_item} 🛍")
-
-        # Initialize recommended items
-        recommended_items = []
-    with st.spinner('Generating recommendations...'):
-        # Recommend products based on the segment
-        if segment == 0:
-            segment_recommendations = combined_recommendation_segment0(preprocessed_data, customer_id)
-            if segment_recommendations:
-                best_sellers = segment_recommendations.get('Best-Sellers', [])
-                personalized_recommendations = segment_recommendations.get('Personalized Recommendations', [])
-                st.markdown(f"**Best-Sellers**: {', '.join(best_sellers)} 🔥")
-                st.markdown(f"**Personalized Recommendations**: {', '.join(personalized_recommendations)} ✨")
-
-        elif segment == 1:
-            segment_recommendations = combined_recommendation_segment1(preprocessed_data, customer_id, last_purchased_item)
-            if segment_recommendations:
-                st.markdown(f"**Exclusive offers Recommendations**: {', '.join(segment_recommendations)} 🤝")
-            else:
-                st.markdown("No recommendations available for Segment 1.")
-
-        elif segment == 2:
-            segment_recommendations = combined_recommendation_segment2(preprocessed_data, preprocessed_data, customer_id)
-            cross_sell = segment_recommendations.get('Cross-Sell Recommendations', [])
-            upsell = segment_recommendations.get('Upsell Recommendations', [])
-            if cross_sell:
-                st.markdown(f"**Cross-Sell Recommendations**: {', '.join(cross_sell)} 🔄")
-            if upsell:
-                st.markdown(f"**Upsell Recommendations**: {', '.join(upsell)} ⬆️")
-            if not cross_sell and not upsell:
-                st.markdown("No recommendations available for Segment 2.")
-
+st.markdown('</div>', unsafe_allow_html=True)
