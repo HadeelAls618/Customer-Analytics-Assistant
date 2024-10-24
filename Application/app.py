@@ -546,30 +546,24 @@ from PIL import Image
 # Load the images
 clv_image = Image.open("Application/images/CLV_image2.png")
 
-# Sidebar CSS to make it responsive and remove excessive white space
+# Sidebar CSS to make it responsive without affecting collapsing behavior
 st.markdown("""
     <style>
-    /* General sidebar settings */
+    /* Allow Streamlit to manage sidebar collapsing by default */
     [data-testid="stSidebar"] {
-        width: 250px;  /* Default width on desktop */
-    }
-
-    /* Ensure main content takes full width without margin */
-    [data-testid="stAppViewContainer"] {
-        margin-left: 0;  /* Prevent shifting content to the right */
-        padding: 0px;    /* Remove extra padding around the content */
+        width: auto;  /* Let Streamlit manage width and collapsing */
     }
 
     /* Media query to reduce sidebar width on smaller screens */
     @media (max-width: 768px) {
         [data-testid="stSidebar"] {
-            width: 200px;  /* Reduce sidebar width on tablets */
+            width: 200px;  /* Reduce sidebar width for tablets */
         }
     }
 
     @media (max-width: 480px) {
         [data-testid="stSidebar"] {
-            width: 150px;  /* Further reduce sidebar width on small mobile devices */
+            width: 150px;  /* Further reduce sidebar width for small mobile devices */
         }
     }
 
@@ -581,6 +575,37 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# Sidebar Image with Responsive Width for Different Screen Sizes
+st.sidebar.markdown("""
+    <style>
+    /* Sidebar image centering and responsiveness */
+    [data-testid="stSidebar"] .stImage {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -20px;  /* Adjust this value if you want the image higher or lower */
+    }
+
+    /* Default width for larger screens */
+    [data-testid="stSidebar"] img {
+        width: 200px;  /* Default image width for larger screens */
+    }
+
+    /* Adjust image size for smaller screens */
+    @media (max-width: 768px) {
+        [data-testid="stSidebar"] img {
+            width: 150px;  /* Smaller width for tablets */
+        }
+    }
+
+    @media (max-width: 480px) {
+        [data-testid="stSidebar"] img {
+            width: 100px;  /* Further reduce width for mobile devices */
+        }
+    }
+
+    </style>
+""", unsafe_allow_html=True)
 
 # Sidebar Image Display
 st.sidebar.image(clv_image, width=200)  # Default image width for larger screens
@@ -613,9 +638,9 @@ st.sidebar.markdown("""
 # Sidebar Header
 st.sidebar.header("What do you want to know about your customer?")
 
-
+# Sidebar Content
 customer_id = st.sidebar.selectbox("Select Customer ID", data['Customer ID'].unique())
-task = st.sidebar.selectbox("Select a Task", ['Introduction','CLTV Analysis', 'CLV Prediction', 'Customer Segmentation', 'Product Recommendation'])
+task = st.sidebar.selectbox("Select a Task", ['Introduction', 'CLTV Analysis', 'CLV Prediction', 'Customer Segmentation', 'Product Recommendation'])
 
 # Main Title
 st.markdown("""
