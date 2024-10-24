@@ -1,4 +1,4 @@
-a
+
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -462,6 +462,7 @@ def combined_recommendation_segment2(segment_data, transactions_df, customer_id,
         'Cross-Sell Recommendations': cross_sell_recs,
         'Upsell Recommendations': upsell_recs
     }
+    
 st.markdown("""
     <style>
     /* Body and Font Styling */
