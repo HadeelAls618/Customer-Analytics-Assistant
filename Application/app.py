@@ -570,7 +570,18 @@ customer_id = st.sidebar.selectbox("Select Customer ID", data['Customer ID'].uni
 task = st.sidebar.selectbox("Select a Task", ['Introduction','CLTV Analysis', 'CLV Prediction', 'Customer Segmentation', 'Product Recommendation'])
 
 # Main Title
-st.title("Custalyze, your Analytics Assistant! ")
+st.markdown("""
+    <style>
+    .main-title {
+        font-size: 32px;  /* Adjust the size as needed */
+        font-weight: bold;
+        text-align: center;  /* You can also center the title */
+        color: #333333;  /* Optional: Change the title color */
+    }
+    </style>
+    <h1 class="main-title">Custalyze, your Analytics Assistant!</h1>
+    """, unsafe_allow_html=True)
+
 # Preprocess data
 preprocessed_data = preprocess_data(data)
 
