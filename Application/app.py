@@ -545,42 +545,74 @@ from PIL import Image
 # Load the images
 clv_image = Image.open("Application/images/CLV_image2.png")
 
-# Sidebar Image with Custom Width and Centering
-st.sidebar.markdown(
-    """
+# Sidebar CSS to make it responsive and remove excessive white space
+st.markdown("""
     <style>
-    /* Center the sidebar image */
-    [data-testid="stSidebar"] .stImage {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: -20px;  /* Adjust this value to move the image upwards */
+    /* General sidebar settings */
+    [data-testid="stSidebar"] {
+        width: 250px;  /* Default width on desktop */
     }
 
-    /* Adjust image size for smaller screens */
+    /* Ensure main content takes full width without margin */
+    [data-testid="stAppViewContainer"] {
+        margin-left: 0;  /* Prevent shifting content to the right */
+        padding: 0px;    /* Remove extra padding around the content */
+    }
+
+    /* Media query to reduce sidebar width on smaller screens */
     @media (max-width: 768px) {
-        [data-testid="stSidebar"] .stImage {
-            width: 150px;  /* Reduce image width on smaller screens (e.g., tablets) */
+        [data-testid="stSidebar"] {
+            width: 200px;  /* Reduce sidebar width on tablets */
         }
     }
 
     @media (max-width: 480px) {
-        [data-testid="stSidebar"] .stImage {
-            width: 120px;  /* Further reduce image width on mobile devices */
+        [data-testid="stSidebar"] {
+            width: 150px;  /* Further reduce sidebar width on small mobile devices */
+        }
+    }
+
+    @media (max-width: 320px) {
+        [data-testid="stSidebar"] {
+            width: 120px;  /* Smallest sidebar width for very small devices */
         }
     }
     </style>
-    """,
-    unsafe_allow_html=True
-)
+""", unsafe_allow_html=True)
+
 
 # Sidebar Image Display
-st.sidebar.image(clv_image, width=200)  # Default width for larger screens
+st.sidebar.image(clv_image, width=200)  # Default image width for larger screens
+
+# Sidebar Header and Content with Responsive Font Size
+st.sidebar.markdown("""
+    <style>
+    /* Custom font size for the sidebar header */
+    [data-testid="stSidebar"] h2 {
+        font-size: 1.2rem;  /* Set a default size for larger screens */
+        font-weight: bold;  /* Optional: Bold text to emphasize the header */
+        text-align: center; /* Optional: Center the header text */
+    }
+
+    /* Adjust font size for smaller screens */
+    @media (max-width: 768px) {
+        [data-testid="stSidebar"] h2 {
+            font-size: 1.0rem;  /* Reduce font size for tablets */
+        }
+    }
+
+    @media (max-width: 480px) {
+        [data-testid="stSidebar"] h2 {
+            font-size: 0.9rem;  /* Further reduce font size for mobile devices */
+        }
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# Sidebar Header
+st.sidebar.header("What do you want to know about your customer?")
 
 
-
-# Sidebar Content
-st.sidebar.header("What do you want to know about you customer?")
 customer_id = st.sidebar.selectbox("Select Customer ID", data['Customer ID'].unique())
 task = st.sidebar.selectbox("Select a Task", ['Introduction','CLTV Analysis', 'CLV Prediction', 'Customer Segmentation', 'Product Recommendation'])
 
