@@ -549,18 +549,33 @@ clv_image = Image.open("Application/images/CLV_image2.png")
 st.sidebar.markdown(
     """
     <style>
+    /* Center the sidebar image */
     [data-testid="stSidebar"] .stImage {
         display: block;
         margin-left: auto;
         margin-right: auto;
-        margin-top: -20px;  /* Adjust this value to move the image upwards if needed */
+        margin-top: -20px;  /* Adjust this value to move the image upwards */
+    }
+
+    /* Adjust image size for smaller screens */
+    @media (max-width: 768px) {
+        [data-testid="stSidebar"] .stImage {
+            width: 150px;  /* Reduce image width on smaller screens (e.g., tablets) */
+        }
+    }
+
+    @media (max-width: 480px) {
+        [data-testid="stSidebar"] .stImage {
+            width: 120px;  /* Further reduce image width on mobile devices */
+        }
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-st.sidebar.image(clv_image, width=200)  # Adjust the width to make it smaller
+# Sidebar Image Display
+st.sidebar.image(clv_image, width=200)  # Default width for larger screens
 
 
 
