@@ -1,7 +1,7 @@
 
 # **Custalyze: Your Analytics Assistant**
 
-Welcome to **Custalyze**, your intelligent assistant for predicting and maximizing **Customer Lifetime Value (CLV)**. Custalyze empowers businesses to make data-driven decisions by providing insights into customer behavior, predicting future value, and optimizing marketing strategies. This results in proactive engagement, reduced churn, and maximized marketing spend for higher ROI.
+Welcome to **Custalyze**, your smart assistant for predicting and maximizing **Customer Lifetime Value (CLV)**. Custalyze empowers businesses to make data-driven decisions by providing insights into customer behavior, predicting future value, and optimizing marketing strategies. This results in proactive engagement, reduced churn, and maximized marketing spend for higher ROI.
 
 Explore the live app: [Custalyze Web App](https://customer-analytics-assistant-urzknsdg8udnsjm9x4efhd.streamlit.app/)
 
