@@ -462,57 +462,7 @@ def combined_recommendation_segment2(segment_data, transactions_df, customer_id,
         'Cross-Sell Recommendations': cross_sell_recs,
         'Upsell Recommendations': upsell_recs
     }
-
-
-# Set page config
-st.set_page_config(
-    page_title="Your App Title",
-    layout="wide",  # Keep the wide layout to prevent automatic collapsing
-    initial_sidebar_state="expanded"   # Optional: Start with the sidebar collapsed
-)
-
-# Insert updated CSS to adjust sidebar width only on mobile devices
-st.markdown("""
-    <style>
-    /* Allow Streamlit to manage the sidebar's default behavior and collapsing */
-
-    /* Media query to reduce sidebar width on smaller screens */
-    @media (max-width: 768px) {
-        [data-testid="stSidebar"] {
-            width: 180px;  /* Reduce sidebar width for tablets and smaller screens */
-        }
-    }
-
-    @media (max-width: 480px) {
-        [data-testid="stSidebar"] {
-            width: 150px;  /* Further reduce sidebar width for mobile devices */
-        }
-    }
-    </style>
-""", unsafe_allow_html=True)
-
-
-
-# Adjust the sidebar width only for smaller screens and let Streamlit manage collapsing
-st.markdown("""
-    <style>
-    /* Allow Streamlit to manage the sidebar's default behavior and collapsing */
-
-    /* Media query to reduce sidebar width on smaller screens */
-    @media (max-width: 500px) {
-        [data-testid="stSidebar"] {
-            width: 180px;  /* Reduce sidebar width for tablets and smaller screens */
-        }
-    }
-
-    @media (max-width: 480px) {
-        [data-testid="stSidebar"] {
-            width: 150px;  /* Further reduce sidebar width for mobile devices */
-        }
-    }
-    </style>
-""", unsafe_allow_html=True)
-   
+    
 st.markdown("""
     <style>
     /* Body and Font Styling */
@@ -650,7 +600,7 @@ st.sidebar.markdown("""
 
     @media (max-width: 480px) {
         [data-testid="stSidebar"] img {
-            width: 1px;  /* Further reduce width for mobile devices */
+            width: 100px;  /* Further reduce width for mobile devices */
         }
     }
 
@@ -936,3 +886,4 @@ elif task == 'Product Recommendation':
                 st.markdown(f"**Upsell Recommendations**: {', '.join(upsell)} ⬆️")
             if not cross_sell and not upsell:
                 st.markdown("No recommendations available for Segment 2.")
+
