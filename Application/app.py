@@ -704,7 +704,7 @@ if task == "Introduction":
         """, unsafe_allow_html=True)
 
         # Load the image with Streamlit
-        st.image("Application/images/CLV_image.png", use_column_width=True)  # Ensure it scales properly
+        st.image("Application/images/CLV_image.png", use_container_width=True)  # Ensure it scales properly
 
     with col3:
         st.write("")
