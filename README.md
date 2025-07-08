@@ -4,13 +4,11 @@ Welcome to **Custalyze**, your go-to analytics assistant for predicting **Custom
 
 Explore the live app: [Custalyze Web App](https://customer-analytics-assistant-urzknsdg8udnsjm9x4efhd.streamlit.app/)
 
----
 
 ## **Project Overview**
 
 **Custalyze** helps retail businesses leverage customer data to predict **Customer Lifetime Value (CLV)**, understand customer segments, and provide personalized product recommendations. Built using a UK retail dataset, this project enables businesses to optimize their marketing efforts by providing valuable insights into each customer’s potential value and behavior, all through a user-friendly web interface.
 
----
 
 ### **App Features:**
 - Predict **Customer Lifetime Value (CLV)** for individual customers.
@@ -19,7 +17,6 @@ Explore the live app: [Custalyze Web App](https://customer-analytics-assistant-u
 - Provide **Personalized Product Recommendations** using advanced recommendation systems based on customer segments.
 - Simple web interface that allows users to input a customer ID and instantly retrieve detailed insights.
 
----
 
 ## **Problem Statement & Solution**
 
@@ -27,7 +24,6 @@ In today’s highly competitive retail market, understanding customer behavior a
 
 **Custalyze** addresses these challenges by providing a comprehensive solution that quantifies a customer’s potential and delivers actionable insights. Built using a UK retail dataset, **Custalyze** empowers businesses to make informed decisions, optimize marketing resources, and retain high-value customers. By offering predictive insights into CLV and personalized strategies for each customer segment, businesses can tailor their marketing efforts, improve customer engagement, and drive sustainable growth.
 
----
 
 ## **Project Workflow**
 
@@ -87,7 +83,6 @@ In today’s highly competitive retail market, understanding customer behavior a
   
   Explore the live app: [Custalyze Web App](https://customer-analytics-assistant-urzknsdg8udnsjm9x4efhd.streamlit.app/)
 
----
 
 ## **Future Enhancements**
 
@@ -95,7 +90,6 @@ In today’s highly competitive retail market, understanding customer behavior a
 - **A/B Testing**: Integrate A/B testing to measure the effectiveness of personalized product recommendations and marketing strategies.
 - **Advanced Dashboard**: Add more visualizations and dynamic dashboards to track customer engagement, CLV trends, and marketing performance.
 
----
 
 ## **License**
 
