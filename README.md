@@ -12,8 +12,6 @@
 
 Built on a real-world **UK retail dataset**, this solution uses probabilistic modeling and clustering techniques to generate actionable insights, enabling smarter marketing decisions and stronger customer retention.
 
-🔗 **Live Demo**: [Custalyze Web App](https://customer-analytics-assistant-urzknsdg8udnsjm9x4efhd.streamlit.app/)
-
 
 ## Business Problem
 
