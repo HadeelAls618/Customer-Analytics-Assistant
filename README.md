@@ -71,12 +71,6 @@ The project follows a modular pipeline from data processing to app deployment:
   | High-Value | Loyal, high spenders        | Retention & rewards       |
   | At-Risk    | Moderate value, recent drop | Upsell & churn prevention |
 
-### 5. Deployment
-
-* Developed a **Streamlit web app** to serve CLV predictions and customer insights
-* Features:
-
-🔗 [Try the App](https://customer-analytics-assistant-urzknsdg8udnsjm9x4efhd.streamlit.app/)
 
 
 ## Contact
