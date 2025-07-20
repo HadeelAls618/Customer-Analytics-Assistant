@@ -14,10 +14,10 @@ from efficient_apriori import apriori as efficient_apriori
 
 
 # Load pre-trained models
-bgf = joblib.load('Application/models/bgf_model.joblib')
-ggf = joblib.load('Application/models/ggf_model.joblib')
-scaler = joblib.load('Application/models/scaled_features.joblib')
-kmeans = joblib.load('Application/models/kmeans_model.joblib')
+bgf = joblib.load('models/bgf_model.joblib')
+ggf = joblib.load('models/ggf_model.joblib')
+scaler = joblib.load('models/scaled_features.joblib')
+kmeans = joblib.load('models/kmeans_model.joblib')
 
 # Load customer transaction data
 data = pd.read_csv('Dataset/data_full2.csv')
