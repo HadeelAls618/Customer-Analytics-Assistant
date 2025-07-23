@@ -46,7 +46,7 @@ The project follows a modular pipeline from data processing to app deployment:
 ### 1. Data Preprocessing & Exploration
 
 * Cleaned and explored the **UK retail dataset**
-* Analyzed key behavior metrics (recency, frequency, monetary value)
+* Analyzed customer behavior metrics
 * Identified missing data, anomalies, and trends
 
 ### 2. RFM Analysis
