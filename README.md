@@ -3,15 +3,15 @@
 
 ## Project Overview
 
-**Custalyze** is an interactive data system that helps businesses unlock the power of their customer data and offers a powerful foundation for **customer intelligence** through:
-
+**Custalyze** is a data-driven system that helps businesses unlock the power of their customer data and offers a powerful foundation for **customer intelligence** through:
 
 * **Customer Lifetime Value (CLV) prediction**
 * **RFM-based segmentation**
 * **Targeted customer strategy recommendations**
 
-Built on a real-world **UK retail dataset**, this solution uses probabilistic modeling and clustering techniques to generate actionable insights, enabling smarter marketing decisions and stronger customer retention.
+Built on a real-world **UK retail dataset**, this solution uses probabilistic modeling and clustering techniques to generate actionable insights—enabling smarter marketing decisions and stronger customer retention.
 
+---
 
 ## Business Problem
 
@@ -21,22 +21,27 @@ Retailers often focus on short-term sales metrics, neglecting long-term customer
 * Missed opportunities for loyalty-building
 * Poor segmentation for personalized outreach
 
-**Custalyze** solves this by providing a **data-driven system** to:
+**Custalyze** solves this by providing a data-driven system to:
 
 * Identify high-value customers early
 * Predict future purchasing behavior
-* Guide marketing teams in **where to invest** for better returns
+* Guide marketing teams on where to invest for higher ROI
 
+---
 
-## Project Goals
+## Machine Learning Problem
 
-* Predict each customer's **lifetime value**
-* Use **RFM and probabilistic models** to assess behavior
-* Segment customers for **tailored marketing actions**
-* Enable **data-driven retention and upsell strategies** via a live app
+To address the business needs, we reframed them into core ML tasks:
 
+* **CLV Prediction:** A regression problem using probabilistic models (BG/NBD & Gamma-Gamma) to estimate a customer’s lifetime value.
+* **Customer Segmentation:** An unsupervised clustering task using K-Means on RFM and CLV features to define strategic customer groups.
+* **Purchase Behavior Modeling:** A time-series probabilistic approach to forecast frequency and value of future transactions.
 
-## 🛠Workflow & Methodology
+These models transform historical sales data into predictive insights that drive personalized, profitable actions.
+
+---
+
+## Project Methodology
 
 The project follows a modular pipeline from data processing to app deployment:
 
@@ -63,11 +68,11 @@ The project follows a modular pipeline from data processing to app deployment:
 * Applied **K-Means Clustering** on CLV + RFM scores
 * Defined 3 key customer segments:
 
-  | Segment    | Description                 | Strategy                  |
-  | ---------- | --------------------------- | ------------------------- |
-  | Low-Value  | Infrequent spenders         | Re-engagement & offers    |
-  | High-Value | Loyal, high spenders        | Retention & rewards       |
-  | At-Risk    | Moderate value, recent drop | Upsell & churn prevention |
+| Segment    | Description                 | Strategy                  |
+| ---------- | --------------------------- | ------------------------- |
+| Low-Value  | Infrequent spenders         | Re-engagement & offers    |
+| High-Value | Loyal, high spenders        | Retention & rewards       |
+| At-Risk    | Moderate value, recent drop | Upsell & churn prevention |
 
 
 
