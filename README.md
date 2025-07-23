@@ -3,7 +3,7 @@
 
 ## Project Overview
 
-**Custalyze** is an interactive data system that helps businesses unlock the power of their customer data and offers a powerful foundation for **customer intelligence**. through:
+**Custalyze** is an interactive data system that helps businesses unlock the power of their customer data and offers a powerful foundation for **customer intelligence** through:
 
 
 * **Customer Lifetime Value (CLV) prediction**
