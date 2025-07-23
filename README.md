@@ -11,7 +11,7 @@
 
 Built on a real-world **UK retail dataset**, this solution uses probabilistic modeling and clustering techniques to generate actionable insights—enabling smarter marketing decisions and stronger customer retention.
 
----
+
 
 ## Business Problem
 
@@ -27,7 +27,6 @@ Retailers often focus on short-term sales metrics, neglecting long-term customer
 * Predict future purchasing behavior
 * Guide marketing teams on where to invest for higher ROI
 
----
 
 ## Machine Learning Problem
 
@@ -39,7 +38,6 @@ To address the business needs, we reframed them into core ML tasks:
 
 These models transform historical sales data into predictive insights that drive personalized, profitable actions.
 
----
 
 ## Project Methodology
 
